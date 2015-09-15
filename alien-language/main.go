@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 )
 
 const (
@@ -32,22 +34,38 @@ func parseInput() {
 		return
 	}
 
-	reader := bufio.NewReader(file)
+	reader := bufio.NewScanner(file)
 
 	// parse the 3 numbers on the first line
-	// TODO: change to readBytes so I can convert to int and string more natively? (and learn more about byte slices!)
-	l, _ := reader.ReadBytes('\n')
-	log.Println(l)
-	//l, _ := reader.ReadString('\n')
-	//nums := strings.Split(l, " ")
+	reader.Scan()
+	l := reader.Text()
 
-	// TODO: either reimplement after the above to has been done (changed to byte slices) OR leave it as is
-	//numWords = int(nums[1])
-	/*numWords, _ = strconv.Atoi(nums[1])
-	log.Println(numWords)
+	nums := strings.Split(l, " ")
 
-	l, _ = reader.ReadString('\n')
-	log.Println(l)*/
+	numWords, _ = strconv.Atoi(nums[1])
+	numTests, _ = strconv.Atoi(nums[2])
+
+	log.Println("words:", numWords, "tests:", numTests)
+
+	// read the words into words slice
+	for i := 0; i < numWords; i++ {
+		// read next line
+		reader.Scan()
+		word := reader.Text()
+
+		words = append(words, word)
+	}
+
+	// read the tests into tests slice
+	for i := 0; i < numTests; i++ {
+		// read next line
+		reader.Scan()
+		test := reader.Text()
+
+		tests = append(tests, test)
+	}
+
+	log.Println(len(tests), tests)
 }
 
 func main() {
