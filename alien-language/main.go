@@ -19,8 +19,6 @@ var (
 	tests []string
 	// slice for storing the result of each test pattern
 	results []int
-	// slice used for caching results during each calculation of a test pattern
-	temp []string
 	// number of words in the language
 	numWords int
 	// number of test cases to run
@@ -62,10 +60,12 @@ func parseInput() {
 		reader.Scan()
 		test := reader.Text()
 
+		// convert string to regex pattern
+		test = strings.Replace(test, "(", "[", -1)
+		test = strings.Replace(test, ")", "]", -1)
+
 		tests = append(tests, test)
 	}
-
-	log.Println(len(tests), tests)
 }
 
 func main() {
