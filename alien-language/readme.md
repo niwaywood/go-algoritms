@@ -4,12 +4,6 @@ NOTE: WORK IN PROGRESS
 
 [link](https://code.google.com/codejam/contest/90101/dashboard#s=p0) (from Code Jam Qualification Round 2009)
 
-Java solutions:
-
-http://www.go-hero.net/jam/09/name/AdrianKuegel
-
-http://www.go-hero.net/jam/09/name/wata
-
 ## Problem
 
 After years of study, scientists at Google Labs have discovered an alien language transmitted from a faraway planet. The alien language is very unique in that every word consists of exactly L lowercase letters. Also, there are exactly D words in this language.
