@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -70,4 +71,31 @@ func parseInput() {
 
 func main() {
 	parseInput()
+
+	// initialise results slice to the size numTests
+	results = make([]int, numTests)
+
+	for k, v := range tests {
+		calculateNumOfMatches(k, v)
+	}
+
+	// print output (using result values written to results slice)
+	log.Println(results)
+}
+
+func calculateNumOfMatches(key int, value string) {
+	// build regex for current test case
+	re := regexp.MustCompile(value)
+
+	count := 0
+	match := false
+
+	for _, word := range words {
+		match = re.MatchString(word)
+		if match {
+			count++
+		}
+	}
+
+	results[key] = count
 }
